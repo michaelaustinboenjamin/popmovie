@@ -1,0 +1,14 @@
+{
+  "name": "explosive-number",
+  "version": "1.0.0",
+  "description": "this is a game where you guess a number that is not a bomb.If you pick a number with a bomb you will automatically lose the game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "michael",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.0.0"
+  }
+}

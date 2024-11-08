@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="content"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="cardtemplate" type="text/x-handlebars-template">
+        <div class="card">
+            <h1 id="title">{{ title }}</h1>
+            <p class="text">{{ text }}</p>
+            <img src="{{ imgUrl }}" alt="" id="image">
+        </div>
+    </script>
+    <script>
+        const template=Handlebars.compile("Handlebars <b>{{doesWhat}}<b>");
+        const cardtemplate=Handlebars.compile(`
+            {{#each pokemons}}
+            <div class="card">
+                <h1 id="title">{{ title }}</h1>
+                <p class="text">{{ text }}</p>
+                {{#if imgUrl}}
+                    <img src="{{ imgUrl }}" alt="" id="image">
+                {{else}}
+                    <p>No Image<p>
+                {{/if}}
+            </div>
+            {{/each}}
+        `);
+        const cardtemplate2=Handlebars.compile(document.getElementById("cardtemplate").innerHTML)
+        const info={
+            title:"The best",
+            text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, voluptas.",
+            imgUrl:""
+        };
+        const infos= {
+            "pokemons":[
+                {
+                    title:"The best",
+                    text:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, incidunt!",
+                    imgUrl:""
+                },
+                {
+                    title:"The best of the best",
+                    text:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, incidunt!",
+                    imgUrl:""
+                }
+            ]
+        }
+        document.getElementById("content").innerHTML=cardtemplate2(info);
+    </script>
+</body>
+</html>

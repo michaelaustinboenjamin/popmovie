@@ -1,0 +1,39 @@
+show dbs
+show collections
+use <db>
+cls
+var <variable>
+help
+exit
+
+Sorting & Limit Data
+db.books.countDocuments()
+db.books.find({author:"Budi"}).count()
+db.books.find().limit(2)
+db.books.find().sort({title:1})
+db.books.find().sort({title:-1}).limit(n)
+
+Operators & Complex Queries
+db.books.find({rating:{$gt:7}})
+db.books.find({rating:{$lt:5}})
+db.books.find({rating:{$lte:7}})
+db.books.find({rating:{$gt:7}, author:"Budi"})
+db.books.find({ $or:[{rating:7}, {rating:9}]})
+db.books.find({ $or: [{pages: {$lt:300}}, {pages:{$gte:400}}]})
+
+Using in and nin
+db.books.find({rating:{$in:[7,8,9]}})
+db.books.find({rating:{$nin:[7,8,9]}})
+
+Querying Arrays
+List as attribute
+db.books.find({genres:{$all:["fantasy","sci-fi"]}})
+
+List of objects /object as attributes
+db.books.find({"reviews.name":"Martin"})
+
+Soal
+Find all books written by "Felix".
+Find all books with a rating higher than 4.5.
+Find all books that have recieved a review from "Felix" and categorized under "fantasy"
+Find all books that have more than 400 pages,a rating of at least 4.5 and belong to the "Fiction" genres

@@ -1,0 +1,62 @@
+[
+    {
+        "title":"My Fantasy",
+        "author":"Michael",
+        "pages":270,
+        "rating":8.9,
+        "reviews":[
+            {"reviewer":"Felix","comment":"This books has a real good stories with great meaning and it inspires me so much!"},{"reviewer":"Bob","comment":"Couldnt put it down"}
+        ],
+        "genres":["Fantasy","Fiction"]
+    },
+    {
+        "title":"Magic World",
+        "author":"Felix",
+        "pages":777,
+        "rating":7.7,
+        "reviews":[
+            {"reviewer":"Bob","comment":"Beautiful"},{"reviewer":"Michael","comment":"Unexpected plot twist"}
+        ],
+        "genres":["Fiction","Mystery"]
+    },
+    {
+        "title":"Educated",
+        "author":"Tara",
+        "pages":352,
+        "rating":4.7,
+        "reviews":[
+            {"reviewer":"Eva","comment":"Inspiring"},{"reviewer":"Frank","comment":"A story with resilience"}
+        ],
+        "genres":["Memoir","Non Fiction"]
+    },
+    {
+        "title":"Becoming",
+        "author":"Michelle",
+        "pages":448,
+        "rating":4.8,
+        "reviews":[
+            {"reviewer":"Grace","comment":"Insightful"},{"reviewer":"Ohio","comment":"An inspiring journey"}
+        ],
+        "genres":["Biography","Autobiography"]
+    },
+    {
+        "title":"Dream",
+        "author":"Michael",
+        "pages":520,
+        "rating":10,
+        "reviews":[
+            {"reviewer":"Speed","comment":"Fantastic"},{"reviewer":"musk","comment":"Beautiful illustration"}
+        ],
+        "genres":["Fantasy","Fiction"]
+    },
+    {
+        "title":"Jackpot!",
+        "author":"Mr.777",
+        "pages":777,
+        "rating":10,
+        "reviews":[
+            {"reviewer":"Viewer","comment":"Lucky🎰"},{"reviewer":"Bocil","comment":"El Hoki"},{"reviewer":"Hacker","comment":"🆒"}
+        ],
+        "genres":["For fun","Fiction"]
+    }
+]

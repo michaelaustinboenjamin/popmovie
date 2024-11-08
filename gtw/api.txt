@@ -1,0 +1,10 @@
+fetch('https://blox-fruits-api.onrender.com/api/bloxfruits')
+    .then(response => response.json())
+    .then((data) => {
+        const jsonData = data
+        const jsonObj = JSON.parse(jsonData)
+        console.log(JSON.stingify(jsonObj, null, 2));
+    })
+    .catch((error) => {
+        console.error('Error fetching data:', error);
+    });

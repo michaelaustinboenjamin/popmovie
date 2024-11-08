@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: skyblue;
+        }
+        .content{
+            width: 800px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background-color: darkgoldenrod;
+        }
+        span#left,span#right{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            border: 2px solid black;
+            background-color: white;
+        }
+        span#left:hover,span#right:hover{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid black;
+            background-color: rgb(68, 68, 68);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span id="left">◀️</span>
+        <div class="content">
+            <h1 id="title"></h1>
+            <img src="" alt="" id="image">
+            <p id="description"></p>
+        </div>
+        <span id="right">▶️</span>
+    </div>
+    <script>
+        function updatecontent(index){
+            let info =data[index];
+            document.getElementById("title").innerHTML=info.title;
+            document.getElementById("image").src=info.imageUrl;
+            document.getElementById("description").innerHTML=info.description;
+        }
+        let data=[];
+        let currentindex=0;
+        const ajax=new XMLHttpRequest();
+        ajax.open("GET","data.json",true);
+        ajax.onload=function(){
+            data=JSON.parse(this.responseText);
+            updatecontent(0);
+        }
+        ajax.send();
+        document.getElementById("left").addEventListener('click',()=>{
+            if(currentindex<=data.length-1 && currentindex!=0){
+                currentindex--;
+                updatecontent(currentindex);
+            }
+            else{
+                currentindex=2;
+                updatecontent(currentindex);
+            }
+        })
+        document.getElementById("right").addEventListener('click',()=>{
+            if(currentindex<data.length-1){
+                currentindex++;
+                updatecontent(currentindex);
+            }
+            else{
+                currentindex=0;
+                updatecontent(currentindex);
+            }
+        })
+    </script>
+</body>
+</html>

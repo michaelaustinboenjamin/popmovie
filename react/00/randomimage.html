@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image</title>
+    <style>
+        *{
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        header h1{
+            text-align: center;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Click Me !!!</h1>
+    </header>
+    <img src="" alt="" id="img">
+    <script>
+        let images= [
+            'images/1.jpg',
+            'images/2.jpg',
+            'images/3.jpg'
+        ];
+        let randomnum=Math.floor(Math.random()*images.length);
+        const imgel=document.getElementById('img');
+        imgel.src=images[randomnum];
+        document.getElementById("img").addEventListener('click',()=>{
+            let randomnum=Math.floor(Math.random()*images.length);
+            const imgel=document.getElementById('img');
+            imgel.src=images[randomnum];
+        })
+        document.querySelector('h1').addEventListener('click',()=>{
+            let randomnum=Math.floor(Math.random()*images.length);
+            const imgel=document.getElementById('img');
+            imgel.src=images[randomnum];
+        })
+    </script>
+</body>
+</html>

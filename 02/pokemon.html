@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: skyblue;
+        }
+        .content{
+            width: 800px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background-color: darkgoldenrod;
+        }
+        span#left,span#right{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            border: 2px solid black;
+            background-color: white;
+        }
+        span#left:hover,span#right:hover{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid black;
+            background-color: rgb(68, 68, 68);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span id="left">◀️</span>
+        <div class="content">
+            <h1 id="title"></h1>
+            <img src="" alt="" id="image">
+            <p id="description"></p>
+        </div>
+        <span id="right">▶️</span>
+    </div>
+    <script>
+        let data=[];
+        let currentindex=1;
+        let url=`https://pokeapi.co/api/v2/pokemon/${currentindex}`
+        loaddatapromise(url)
+            .then(result=>{
+                console.log(result);
+                updatecontent();
+            })
+            .catch(error=>console.error(error));
+        document.getElementById("left").addEventListener('click',()=>{
+            if(currentindex<0 && currentindex!=0){
+                currentindex--;
+                loaddatapromise(url)
+                .then(result=>{
+                    console.log(result);
+                    updatecontent();
+                })
+                    .catch(error=>console.error(error));
+            } else{
+                currentindex=data.length;
+                loaddatapromise(url)
+                .then(result=>{
+                    console.log(result);
+                    updatecontent();                        
+                })
+                .catch(error=>console.error(error));
+            }
+        })
+        document.getElementById("right").addEventListener('click',()=>{
+            if(currentindex>0){
+                currentindex++;
+                loaddatapromise(url)
+                    .then(result=>{
+                        console.log(result);
+                        updatecontent();
+                    })
+                    .catch(error=>console.error(error));
+                }
+                else{
+                    currentindex=1;
+                    loaddatapromise(url)
+                        .then(result=>{
+                            console.log(result);
+                            updatecontent();
+                        })
+                        .catch(error=>console.error(error));
+            }
+        })
+        function updatecontent(){
+            let pokemon =data;
+            document.getElementById("title").innerHTML=pokemon.name;
+            document.getElementById("image").src=pokemon.sprites.front_default;
+            // document.getElementById("description").innerHTML=pokemon.description;
+        }
+        function loaddatapromise(url){
+            return new Promise((resolve, reject) => {
+                const ajax=new XMLHttpRequest();
+                ajax.onload=function(){
+                    if(this.status==200&&this.readyState==4){
+                        data=JSON.parse(this.responseText);
+                        resolve(data);
+                    } else{
+                        reject("no data");
+                    }
+                    setTimeout(()=>{
+                        reject("no data (Time Out..)")
+                    },10000)
+                };
+                ajax.open("GET",url,true);
+                ajax.send();
+            })
+        }
+        // const loaddatapromise=new Promise((resolve,reject)=>{
+        //     const ajax=new XMLHttpRequest();
+        //     ajax.onload=function(){
+        //         if(this.status==200&&this.readyState==4){
+        //             data=JSON.parse(this.responseText);
+        //             resolve(data);
+        //         } else{
+        //             reject("no data");
+        //         }
+        //         setTimeout(()=>{
+        //             reject("no data (Time Out..)")
+        //         },10000)
+        //     };
+        //     ajax.open("GET",url,true);
+        //     ajax.send();
+        // })
+        // const ajax=new XMLHttpRequest();
+        // ajax.open("GET",url,true);
+        // ajax.onload=function(){
+        //     data=JSON.parse(this.responseText);
+        //     console.log(data);
+        //     updatecontent();
+        // };
+        // ajax.send();
+    </script>
+</body>
+</html>
